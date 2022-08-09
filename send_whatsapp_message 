@@ -1,0 +1,23 @@
+import pywhatkit
+from datetime import datetime
+
+#Ask to enter the phone number
+phone_number = input("Enter the phone number: ")
+
+#I added +1 for US country-code. Please change if outside of US ex. +34 for Spain
+phone_number ="+1"+phone_number
+
+#Enter you message 
+message = input("Enter your message: ")
+
+#Used to get the exact time at code execution.
+currentDateAndTime = datetime.now()
+
+#Gets the current hour
+hour = currentDateAndTime.hour
+
+#Gets the current minute and adds 1 minute to give time for program to send message today.
+minute = (currentDateAndTime.minute + 1)
+
+# 7 seconds is the earliest the message can send, True to close browser tab and 3 seconds to close tab once mesasage sent.
+pywhatkit.sendwhatmsg(phone_number, message, hour, minute, 7, True, 3)
